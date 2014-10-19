@@ -1,0 +1,31 @@
+{
+  "name": "Osteoporosis.js",
+  "version": "1.0.0",
+  "description": "Minimal Model-View library for JavaScript",
+  "main": "osteoporosis.js",
+  "scripts": {
+    "test": "open test/runner.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ginpei/Osteoporosis.js.git"
+  },
+  "keywords": [
+    "model",
+    "view",
+    "event",
+    "backbone"
+  ],
+  "author": "TAKANASHI Ginpei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ginpei/Osteoporosis.js/issues"
+  },
+  "homepage": "https://github.com/ginpei/Osteoporosis.js",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.0",
+    "underscore": "^1.7.0"
+  },
+  "dependencies": {}
+}
