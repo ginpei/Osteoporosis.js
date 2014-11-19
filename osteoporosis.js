@@ -84,27 +84,20 @@ var Osteoporosis = (function() {
 
 		/**
 		 * Sets a storage value.
-		 * @param {String} key Name of the storage value.
-		 * @param {Object} value Content of the storage value.
+		 * @param {Object} attributes Pairs of keys and values to be stored.
 		 */
-		set: function(key, value) {
-			var attributes;
-
-			if (arguments.length === 1) {
-				attributes = key;
-				for (key in attributes) {
-					this.set(key, attributes[key]);
+		set: function(attributes) {
+			var storage = this.attributes;
+			for (var key in attributes) {
+				var value = attributes[key];
+				var lastValue = storage[key];
+				if (value !== lastValue) {
+					storage[key] = value;
+					this.trigger('change:'+key, this, value);
+					this.trigger('change', this);
 				}
-				return this;
 			}
-
-			attributes = this.attributes;
-			var lastValue = attributes[key];
-			if (value !== lastValue) {
-				attributes[key] = value;
-				this.trigger('change:'+key, this, value);
-				this.trigger('change', this);
-			}
+			return this;
 		},
 
 		/**

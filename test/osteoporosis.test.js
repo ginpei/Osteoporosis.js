@@ -75,28 +75,23 @@ describe('Model', function() {
 			expect(model.get('bar')).to.eql(234);
 		});
 
-		it('stores a value', function() {
-			model.set('foo', 123);
-			expect(model.get('foo')).to.eql(123);
-		});
-
 		it('fires the change event', function() {
 			var called = false;
 			model.on('change', function() {
 				called = true;
 			});
-			model.set('foo', 123);
+			model.set({ foo:123 });
 			expect(called).to.eql(true);
 		});
 
 		it('does not fire the change event for same value', function() {
-			model.set('foo', 123);
+			model.set({ foo:123 });
 
 			var called = false;
 			model.on('change', function() {
 				called = true;
 			});
-			model.set('foo', 123);
+			model.set({ foo:123 });
 			expect(called).to.eql(false);
 		});
 
@@ -105,7 +100,7 @@ describe('Model', function() {
 			model.on('change:foo', function() {
 				called = true;
 			});
-			model.set('foo', 123);
+			model.set({ foo:123 });
 			expect(called).to.eql(true);
 		});
 	});

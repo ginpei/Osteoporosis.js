@@ -53,7 +53,7 @@
 
 			var $link = $(event.currentTarget);
 			var target = $link.attr('href').slice(1);  // "href=#foo" -> "foo"
-			this.model.set('target', target);
+			this.model.set({ target:target });
 		},
 
 		/**
@@ -88,6 +88,6 @@
 		});
 
 		// select default tab
-		tab.set('target', 'item1');
+		tab.set({ target:'item1' });
 	});
 })();
