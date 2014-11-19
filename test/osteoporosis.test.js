@@ -135,14 +135,8 @@ describe('View', function() {
 			expect(view.$el[0]).to.equal(el);
 		});
 
-		it('stores a jQuery object by the $el option', function() {
-			var el = {};
-			view = new MyView({ $el:el });
-			expect(view.$el[0]).to.equal(el);
-		});
-
 		it('finds any elements under its own element', function() {
-			view = new MyView({ $el:{} });
+			view = new MyView({ el:{} });
 
 			var called;
 			view.$el.find = function(selector) {  // a mock to "finds any elements under its own element"
