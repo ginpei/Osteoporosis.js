@@ -75,28 +75,23 @@ describe('Model', function() {
 			expect(model.get('bar')).to.eql(234);
 		});
 
-		it('stores a value', function() {
-			model.set('foo', 123);
-			expect(model.get('foo')).to.eql(123);
-		});
-
 		it('fires the change event', function() {
 			var called = false;
 			model.on('change', function() {
 				called = true;
 			});
-			model.set('foo', 123);
+			model.set({ foo:123 });
 			expect(called).to.eql(true);
 		});
 
 		it('does not fire the change event for same value', function() {
-			model.set('foo', 123);
+			model.set({ foo:123 });
 
 			var called = false;
 			model.on('change', function() {
 				called = true;
 			});
-			model.set('foo', 123);
+			model.set({ foo:123 });
 			expect(called).to.eql(false);
 		});
 
@@ -105,7 +100,7 @@ describe('Model', function() {
 			model.on('change:foo', function() {
 				called = true;
 			});
-			model.set('foo', 123);
+			model.set({ foo:123 });
 			expect(called).to.eql(true);
 		});
 	});
@@ -135,26 +130,8 @@ describe('View', function() {
 			expect(view.$el[0]).to.equal(el);
 		});
 
-		it('stores a jQuery object by the $el option', function() {
-			var el = {};
-			view = new MyView({ $el:el });
-			expect(view.$el[0]).to.equal(el);
-		});
-
-		it('stores an element object by the el option', function() {
-			var el = {};
-			view = new MyView({ el:el });
-			expect(view.el).to.equal(el);
-		});
-
-		it('stores an element object by the $el option', function() {
-			var el = {};
-			view = new MyView({ $el:el });
-			expect(view.el).to.equal(el);
-		});
-
 		it('finds any elements under its own element', function() {
-			view = new MyView({ $el:{} });
+			view = new MyView({ el:{} });
 
 			var called;
 			view.$el.find = function(selector) {  // a mock to "finds any elements under its own element"
@@ -163,14 +140,6 @@ describe('View', function() {
 
 			view.$('#foo');
 			expect(called).to.eql('#foo');
-		});
-	});
-
-	describe('model', function() {
-		it('stores a model in initialize option', function() {
-			var model = {};
-			view = new MyView({ model:model });
-			expect(view.model).to.equal(model);
 		});
 	});
 });
