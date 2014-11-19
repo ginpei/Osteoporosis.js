@@ -137,7 +137,7 @@ var Osteoporosis = (function() {
 		 */
 		__osteoporosis__: function(options) {
 			options = options || {};
-			this.el = (this.$el = $(options.el || options.$el || document))[0];
+			this.$el = $(options.el || options.$el || document);
 			this.model = options.model;
 		},
 

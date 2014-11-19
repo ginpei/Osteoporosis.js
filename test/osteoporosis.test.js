@@ -141,18 +141,6 @@ describe('View', function() {
 			expect(view.$el[0]).to.equal(el);
 		});
 
-		it('stores an element object by the el option', function() {
-			var el = {};
-			view = new MyView({ el:el });
-			expect(view.el).to.equal(el);
-		});
-
-		it('stores an element object by the $el option', function() {
-			var el = {};
-			view = new MyView({ $el:el });
-			expect(view.el).to.equal(el);
-		});
-
 		it('finds any elements under its own element', function() {
 			view = new MyView({ $el:{} });
 
