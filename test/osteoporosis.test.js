@@ -147,12 +147,4 @@ describe('View', function() {
 			expect(called).to.eql('#foo');
 		});
 	});
-
-	describe('model', function() {
-		it('stores a model in initialize option', function() {
-			var model = {};
-			view = new MyView({ model:model });
-			expect(view.model).to.equal(model);
-		});
-	});
 });

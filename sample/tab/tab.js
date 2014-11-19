@@ -33,6 +33,8 @@
 	// The Tab View
 	var TabView = O.View.extend({
 		initialize: function(options) {
+			this.model = options.model;
+
 			// Update model's value by user operation
 			// (Element -> Model)
 			this.$('nav a').on('click', this.onclickButton.bind(this));

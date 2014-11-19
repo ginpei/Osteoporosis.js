@@ -138,7 +138,6 @@ var Osteoporosis = (function() {
 		__osteoporosis__: function(options) {
 			options = options || {};
 			this.$el = $(options.el || document);
-			this.model = options.model;
 		},
 
 		initialize: noop,
