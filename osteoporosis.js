@@ -1,4 +1,4 @@
-/*! Osteoporosis.js v1.0.0 By TAKANASHI Ginpei */
+/*! Osteoporosis.js v1.0.1 By TAKANASHI Ginpei */
 /*  https://github.com/ginpei/Osteoporosis.js  */
 var Osteoporosis = (function() {
 	var O = {};
