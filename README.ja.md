@@ -196,19 +196,6 @@ var model = new MyModel({ v1:123, v2:'foo' });
 
 値を返します。
 
-### set(key, value)
-
-* 戻り値: インスタンス。
-* `key`: {String} 値の名前。
-* `value`: {Object} 保存される任意の値。
-
-値を保存します。
-
-```js
-model.set('v1', 123);
-console.assert(model.get('v1') === 123);
-```
-
 ### set(attributes)
 
 * 戻り値: インスタンス。
@@ -219,6 +206,8 @@ model.set({ v1:123, v2:'foo' });
 console.assert(model.get('v1') === 123);
 console.assert(model.get('v2') === 'foo');
 ```
+
+`set(key, value)`は利用できません。
 
 ### attributes
 
@@ -307,13 +296,7 @@ console.assert(p[0].id === 'p1');
 
 * 型: jQuery Object
 
-コンストラクターの`options`で指定されたもの。
-
-### model
-
-* 型: Osteoporosis.Model
-
-コンストラクターの`options`で指定されたもの。
+コンストラクターの`options.el`で指定されたものを格納したjQueryオブジェクト。
 
 ### Event機能
 

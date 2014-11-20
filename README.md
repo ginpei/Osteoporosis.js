@@ -196,19 +196,6 @@ var model = new MyModel({ v1:123, v2:'foo' });
 
 Returns the value.
 
-### set(key, value)
-
-* Returns: instance.
-* `key`: {String} name of the value.
-* `value`: {Object} any values to be stored.
-
-Remember the value.
-
-```js
-model.set('v1', 123);
-console.assert(model.get('v1') === 123);
-```
-
 ### set(attributes)
 
 * Returns: instance.
@@ -219,6 +206,8 @@ model.set({ v1:123, v2:'foo' });
 console.assert(model.get('v1') === 123);
 console.assert(model.get('v2') === 'foo');
 ```
+
+`set(key, value)` is not supported.
 
 ### attributes
 
@@ -307,13 +296,7 @@ Specified in `options` of constructor.
 
 * Type: jQuery Object
 
-Specified in `options` of constructor.
-
-### model
-
-* Type: Osteoporosis.Model
-
-Specified in `options` of constructor.
+jQuery object inclusing specified in `options.el` of constructor.
 
 ### Event Functions
 
