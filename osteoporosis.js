@@ -3,6 +3,9 @@
 var Osteoporosis = (function() {
 	var O = {};
 
+	// make codes more short when minimized
+	var S_PROTOTYPE = 'prototype';
+
 	var slice = Array.prototype.slice;
 	var extend = (typeof _ === 'undefined' ? $.extend : _.extend);
 	var noop = function() { };
@@ -15,7 +18,7 @@ var Osteoporosis = (function() {
 			this.initialize(attributes);
 		}
 		Child.extend = O.extend;
-		extend(Child.prototype, this.prototype, prototype);
+		extend(Child[S_PROTOTYPE], this[S_PROTOTYPE], prototype);
 		extend(Child, statics);
 		return Child;
 	};
@@ -70,7 +73,7 @@ var Osteoporosis = (function() {
 
 	O.Model.extend = O.extend;
 
-	extend(O.Model.prototype, {
+	extend(O.Model[S_PROTOTYPE], {
 		/**
 		 * The constructor for model.
 		 * @param {Object} attributes Key-value pairs to be set.
@@ -123,7 +126,7 @@ var Osteoporosis = (function() {
 
 	O.View.extend = O.extend;
 
-	extend(O.View.prototype, {
+	extend(O.View[S_PROTOTYPE], {
 		/**
 		 * The constructor for view.
 		 * @param {Object} options Any options within `el`.
