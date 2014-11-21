@@ -7,6 +7,7 @@ var Osteoporosis = (function() {
 	var S_PROTOTYPE = 'prototype';
 	var S_EXTEND = 'extend';
 	var S_TRIGGER = 'trigger';
+	var S_ATTRIBUTES = 'attributes';
 
 	var slice = Array.prototype.slice;
 	var extend = (typeof _ === 'undefined' ? $[S_EXTEND] : _[S_EXTEND]);
@@ -81,7 +82,7 @@ var Osteoporosis = (function() {
 		 * @param {Object} attributes Key-value pairs to be set.
 		 */
 		__osteoporosis__: function(attributes) {
-			this.attributes = {};
+			this[S_ATTRIBUTES] = {};
 			return this.set(attributes);
 		},
 
@@ -92,7 +93,7 @@ var Osteoporosis = (function() {
 		 * @param {Object} attributes Pairs of keys and values to be stored.
 		 */
 		set: function(attributes) {
-			var storage = this.attributes;
+			var storage = this[S_ATTRIBUTES];
 			for (var key in attributes) {
 				var value = attributes[key];
 				var lastValue = storage[key];
@@ -111,7 +112,7 @@ var Osteoporosis = (function() {
 		 * @returns {Object} The content of storaged value.
 		 */
 		get: function(key) {
-			return this.attributes[key];
+			return this[S_ATTRIBUTES][key];
 		},
 
 		// event methods

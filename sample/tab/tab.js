@@ -1,23 +1,23 @@
 (function() {
 /*! Osteoporosis.js v1.0.1 By TAKANASHI Ginpei */
 var Osteoporosis=function(){var t={},i="prototype",n="extend",e=
-"trigger",r=Array.prototype.slice,o="undefined"==typeof _?$[n]:_
-[n],s=function(){};t[n]=function(e,r){function s(t){this.
-__osteoporosis__(t),this.initialize(t)}return s[n]=t[n],o(s[i],
-this[i],e),o(s,r),s};var u=t.eventPrototype={on:function(t,i){
-var n=this._listeners;n||(n=this._listeners={});var e=n[t];e||(e
-=n[t]=[]),e.push(i)},trigger:function(t){var i=this._listeners;
-if(i&&i[t]){var n=r.call(arguments,1);i[t].forEach(function(t){t
-.apply(null,n)})}}};return t.Model=function(){},t.Model[n]=t[n],
-o(t.Model[i],{__osteoporosis__:function(t){return this.
-attributes={},this.set(t)},initialize:s,set:function(t){var i=
-this.attributes;for(var n in t){var r=t[n],o=i[n];r!==o&&(i[n]=r
-,this[e]("change:"+n,this,r),this[e]("change",this))}return this
-},get:function(t){return this.attributes[t]},on:u.on,trigger:u[e
-]}),t.View=function(){},t.View[n]=t[n],o(t.View[i],{
-__osteoporosis__:function(t){t=t||{},this.$el=$(t.el||document)}
-,initialize:s,$:function(t){return this.$el.find(t)},on:u.on,
-trigger:u[e]}),t}();
+"trigger",r="attributes",o=Array.prototype.slice,s="undefined"==
+typeof _?$[n]:_[n],u=function(){};t[n]=function(e,r){function o(
+t){this.__osteoporosis__(t),this.initialize(t)}return o[n]=t[n],
+s(o[i],this[i],e),s(o,r),o};var a=t.eventPrototype={on:function(
+t,i){var n=this._listeners;n||(n=this._listeners={});var e=n[t];
+e||(e=n[t]=[]),e.push(i)},trigger:function(t){var i=this.
+_listeners;if(i&&i[t]){var n=o.call(arguments,1);i[t].forEach(
+function(t){t.apply(null,n)})}}};return t.Model=function(){},t.
+Model[n]=t[n],s(t.Model[i],{__osteoporosis__:function(t){
+return this[r]={},this.set(t)},initialize:u,set:function(t){var
+i=this[r];for(var n in t){var o=t[n],s=i[n];o!==s&&(i[n]=o,this[
+e]("change:"+n,this,o),this[e]("change",this))}return this},get:
+function(t){return this[r][t]},on:a.on,trigger:a[e]}),t.View=
+function(){},t.View[n]=t[n],s(t.View[i],{__osteoporosis__:
+function(t){t=t||{},this.$el=$(t.el||document)},initialize:u,$:
+function(t){return this.$el.find(t)},on:a.on,trigger:a[e]}),t}()
+;
 
 	var O = Osteoporosis;
 
