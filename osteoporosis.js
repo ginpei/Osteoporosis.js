@@ -6,6 +6,7 @@ var Osteoporosis = (function() {
 	// make codes more short when minimized
 	var S_PROTOTYPE = 'prototype';
 	var S_EXTEND = 'extend';
+	var S_TRIGGER = 'trigger';
 
 	var slice = Array.prototype.slice;
 	var extend = (typeof _ === 'undefined' ? $[S_EXTEND] : _[S_EXTEND]);
@@ -97,8 +98,8 @@ var Osteoporosis = (function() {
 				var lastValue = storage[key];
 				if (value !== lastValue) {
 					storage[key] = value;
-					this.trigger('change:'+key, this, value);
-					this.trigger('change', this);
+					this[S_TRIGGER]('change:'+key, this, value);
+					this[S_TRIGGER]('change', this);
 				}
 			}
 			return this;
@@ -115,7 +116,7 @@ var Osteoporosis = (function() {
 
 		// event methods
 		on: eventPrototype.on,
-		trigger: eventPrototype.trigger
+		trigger: eventPrototype[S_TRIGGER]
 	});
 
 	// ----------------------------------------------------------------
@@ -150,7 +151,7 @@ var Osteoporosis = (function() {
 
 		// event methods
 		on: eventPrototype.on,
-		trigger: eventPrototype.trigger
+		trigger: eventPrototype[S_TRIGGER]
 	});
 
 	return O;
