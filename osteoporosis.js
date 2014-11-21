@@ -3,19 +3,26 @@
 var Osteoporosis = (function() {
 	var O = {};
 
-	var slice = Array.prototype.slice;
-	var extend = (typeof _ === 'undefined' ? $.extend : _.extend);
+	// make codes more short when minimized
+	var S_PROTOTYPE = 'prototype';
+	var S_EXTEND = 'extend';
+	var S_TRIGGER = 'trigger';
+	var S_ATTRIBUTES = 'attributes';
+	var S__LISTENERS = '_listeners';
+
+	var slice = [].slice;
+	var extend = (typeof _ === 'undefined' ? $[S_EXTEND] : _[S_EXTEND]);
 	var noop = function() { };
 
 	// ----------------------------------------------------------------
 
-	O.extend = function(prototype, statics) {
+	O[S_EXTEND] = function(prototype, statics) {
 		function Child(attributes) {
 			this.__osteoporosis__(attributes);
 			this.initialize(attributes);
 		}
-		Child.extend = O.extend;
-		extend(Child.prototype, this.prototype, prototype);
+		Child[S_EXTEND] = O[S_EXTEND];
+		extend(Child[S_PROTOTYPE], this[S_PROTOTYPE], prototype);
 		extend(Child, statics);
 		return Child;
 	};
@@ -33,9 +40,9 @@ var Osteoporosis = (function() {
 		 * @param {Function} listener
 		 */
 		on: function(type, listener) {
-			var allListeners = this._listeners;
+			var allListeners = this[S__LISTENERS];
 			if (!allListeners) {
-				allListeners = this._listeners = {};
+				allListeners = this[S__LISTENERS] = {};
 			}
 
 			var listeners = allListeners[type];
@@ -51,7 +58,7 @@ var Osteoporosis = (function() {
 		 * @param {String} type
 		 */
 		trigger: function(type) {
-			var allListeners = this._listeners;
+			var allListeners = this[S__LISTENERS];
 			if (allListeners && allListeners[type]) {
 				var args = slice.call(arguments, 1);
 				allListeners[type].forEach(function(listener) {
@@ -68,15 +75,15 @@ var Osteoporosis = (function() {
 	 */
 	O.Model = function Model() {}
 
-	O.Model.extend = O.extend;
+	O.Model[S_EXTEND] = O[S_EXTEND];
 
-	extend(O.Model.prototype, {
+	extend(O.Model[S_PROTOTYPE], {
 		/**
 		 * The constructor for model.
 		 * @param {Object} attributes Key-value pairs to be set.
 		 */
 		__osteoporosis__: function(attributes) {
-			this.attributes = {};
+			this[S_ATTRIBUTES] = {};
 			return this.set(attributes);
 		},
 
@@ -87,14 +94,14 @@ var Osteoporosis = (function() {
 		 * @param {Object} attributes Pairs of keys and values to be stored.
 		 */
 		set: function(attributes) {
-			var storage = this.attributes;
+			var storage = this[S_ATTRIBUTES];
 			for (var key in attributes) {
 				var value = attributes[key];
 				var lastValue = storage[key];
 				if (value !== lastValue) {
 					storage[key] = value;
-					this.trigger('change:'+key, this, value);
-					this.trigger('change', this);
+					this[S_TRIGGER]('change:'+key, this, value);
+					this[S_TRIGGER]('change', this);
 				}
 			}
 			return this;
@@ -106,12 +113,12 @@ var Osteoporosis = (function() {
 		 * @returns {Object} The content of storaged value.
 		 */
 		get: function(key) {
-			return this.attributes[key];
+			return this[S_ATTRIBUTES][key];
 		},
 
 		// event methods
 		on: eventPrototype.on,
-		trigger: eventPrototype.trigger
+		trigger: eventPrototype[S_TRIGGER]
 	});
 
 	// ----------------------------------------------------------------
@@ -121,9 +128,9 @@ var Osteoporosis = (function() {
 	 */
 	O.View = function View() {};
 
-	O.View.extend = O.extend;
+	O.View[S_EXTEND] = O[S_EXTEND];
 
-	extend(O.View.prototype, {
+	extend(O.View[S_PROTOTYPE], {
 		/**
 		 * The constructor for view.
 		 * @param {Object} options Any options within `el`.
@@ -146,7 +153,7 @@ var Osteoporosis = (function() {
 
 		// event methods
 		on: eventPrototype.on,
-		trigger: eventPrototype.trigger
+		trigger: eventPrototype[S_TRIGGER]
 	});
 
 	return O;
