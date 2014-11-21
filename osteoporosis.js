@@ -8,6 +8,7 @@ var Osteoporosis = (function() {
 	var S_EXTEND = 'extend';
 	var S_TRIGGER = 'trigger';
 	var S_ATTRIBUTES = 'attributes';
+	var S__LISTENERS = '_listeners';
 
 	var slice = Array.prototype.slice;
 	var extend = (typeof _ === 'undefined' ? $[S_EXTEND] : _[S_EXTEND]);
@@ -39,9 +40,9 @@ var Osteoporosis = (function() {
 		 * @param {Function} listener
 		 */
 		on: function(type, listener) {
-			var allListeners = this._listeners;
+			var allListeners = this[S__LISTENERS];
 			if (!allListeners) {
-				allListeners = this._listeners = {};
+				allListeners = this[S__LISTENERS] = {};
 			}
 
 			var listeners = allListeners[type];
@@ -57,7 +58,7 @@ var Osteoporosis = (function() {
 		 * @param {String} type
 		 */
 		trigger: function(type) {
-			var allListeners = this._listeners;
+			var allListeners = this[S__LISTENERS];
 			if (allListeners && allListeners[type]) {
 				var args = slice.call(arguments, 1);
 				allListeners[type].forEach(function(listener) {
