@@ -1,24 +1,23 @@
 (function() {
 /*! Osteoporosis.js v1.0.1 By TAKANASHI Ginpei */
-var Osteoporosis=function(){var t={},e=Array.prototype.slice,i=
-"undefined"==typeof _?$.extend:_.extend,n=function(){};t.extend=
-function(e,n){function r(t){this.__osteoporosis__(t),this.
-initialize(t)}return r.extend=t.extend,i(r.prototype,this.
-prototype,e),i(r,n),r};var r=t.eventPrototype={on:function(t,e){
-var i=this._listeners;i||(i=this._listeners={});var n=i[t];n||(n
-=i[t]=[]),n.push(e)},trigger:function(t){var i=this._listeners;
-if(i&&i[t]){var n=e.call(arguments,1);i[t].forEach(function(t){t
-.apply(null,n)})}}};return t.Model=function(){},t.Model.extend=t
-.extend,i(t.Model.prototype,{__osteoporosis__:function(t){
-return this.attributes={},this.set(t)},initialize:n,set:function
-(t){var e=this.attributes;for(var i in t){var n=t[i],r=e[i];n!==
-r&&(e[i]=n,this.trigger("change:"+i,this,n),this.trigger(
-"change",this))}return this},get:function(t){return this.
-attributes[t]},on:r.on,trigger:r.trigger}),t.View=function(){},t
-.View.extend=t.extend,i(t.View.prototype,{__osteoporosis__:
-function(t){t=t||{},this.$el=$(t.el||document)},initialize:n,$:
-function(t){return this.$el.find(t)},on:r.on,trigger:r.trigger})
-,t}();
+var Osteoporosis=function(){var t={},i="prototype",e="extend",n=
+Array.prototype.slice,r="undefined"==typeof _?$[e]:_[e],o=
+function(){};t[e]=function(n,o){function s(t){this.
+__osteoporosis__(t),this.initialize(t)}return s[e]=t[e],r(s[i],
+this[i],n),r(s,o),s};var s=t.eventPrototype={on:function(t,i){
+var e=this._listeners;e||(e=this._listeners={});var n=e[t];n||(n
+=e[t]=[]),n.push(i)},trigger:function(t){var i=this._listeners;
+if(i&&i[t]){var e=n.call(arguments,1);i[t].forEach(function(t){t
+.apply(null,e)})}}};return t.Model=function(){},t.Model[e]=t[e],
+r(t.Model[i],{__osteoporosis__:function(t){return this.
+attributes={},this.set(t)},initialize:o,set:function(t){var i=
+this.attributes;for(var e in t){var n=t[e],r=i[e];n!==r&&(i[e]=n
+,this.trigger("change:"+e,this,n),this.trigger("change",this))}
+return this},get:function(t){return this.attributes[t]},on:s.on,
+trigger:s.trigger}),t.View=function(){},t.View[e]=t[e],r(t.View[
+i],{__osteoporosis__:function(t){t=t||{},this.$el=$(t.el||
+document)},initialize:o,$:function(t){return this.$el.find(t)},
+on:s.on,trigger:s.trigger}),t}();
 
 	var O = Osteoporosis;
 

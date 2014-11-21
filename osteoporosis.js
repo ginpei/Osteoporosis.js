@@ -5,19 +5,20 @@ var Osteoporosis = (function() {
 
 	// make codes more short when minimized
 	var S_PROTOTYPE = 'prototype';
+	var S_EXTEND = 'extend';
 
 	var slice = Array.prototype.slice;
-	var extend = (typeof _ === 'undefined' ? $.extend : _.extend);
+	var extend = (typeof _ === 'undefined' ? $[S_EXTEND] : _[S_EXTEND]);
 	var noop = function() { };
 
 	// ----------------------------------------------------------------
 
-	O.extend = function(prototype, statics) {
+	O[S_EXTEND] = function(prototype, statics) {
 		function Child(attributes) {
 			this.__osteoporosis__(attributes);
 			this.initialize(attributes);
 		}
-		Child.extend = O.extend;
+		Child[S_EXTEND] = O[S_EXTEND];
 		extend(Child[S_PROTOTYPE], this[S_PROTOTYPE], prototype);
 		extend(Child, statics);
 		return Child;
@@ -71,7 +72,7 @@ var Osteoporosis = (function() {
 	 */
 	O.Model = function Model() {}
 
-	O.Model.extend = O.extend;
+	O.Model[S_EXTEND] = O[S_EXTEND];
 
 	extend(O.Model[S_PROTOTYPE], {
 		/**
@@ -124,7 +125,7 @@ var Osteoporosis = (function() {
 	 */
 	O.View = function View() {};
 
-	O.View.extend = O.extend;
+	O.View[S_EXTEND] = O[S_EXTEND];
 
 	extend(O.View[S_PROTOTYPE], {
 		/**
