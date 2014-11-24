@@ -9,6 +9,8 @@ var Osteoporosis = (function() {
 	var S_TRIGGER = 'trigger';
 	var S_ATTRIBUTES = 'attributes';
 	var S__LISTENERS = '_listeners';
+	var S__OSTEOPOROSIS__ = '__osteoporosis__';
+	var S_INITIALIZE = 'initialize';
 
 	var slice = [].slice;
 	var extend = (typeof _ === 'undefined' ? $[S_EXTEND] : _[S_EXTEND]);
@@ -18,8 +20,8 @@ var Osteoporosis = (function() {
 
 	O[S_EXTEND] = function(prototype, statics) {
 		function Child(attributes) {
-			this.__osteoporosis__(attributes);
-			this.initialize(attributes);
+			this[S__OSTEOPOROSIS__](attributes);
+			this[S_INITIALIZE](attributes);
 		}
 		Child[S_EXTEND] = O[S_EXTEND];
 		extend(Child[S_PROTOTYPE], this[S_PROTOTYPE], prototype);
@@ -73,22 +75,23 @@ var Osteoporosis = (function() {
 	/**
 	 * Model
 	 */
-	O.Model = function Model() {}
+	var Model = O.Model = function Model() {}
+	Model[S_EXTEND] = O[S_EXTEND];
+	var modelPrototype = Model[S_PROTOTYPE];
 
-	O.Model[S_EXTEND] = O[S_EXTEND];
+	/**
+	 * The constructor for model.
+	 * @param {Object} attributes Key-value pairs to be set.
+	 */
+	modelPrototype[S__OSTEOPOROSIS__] = function(attributes) {
+		this[S_ATTRIBUTES] = {};
+		return this.set(attributes);
+	};
 
-	extend(O.Model[S_PROTOTYPE], {
-		/**
-		 * The constructor for model.
-		 * @param {Object} attributes Key-value pairs to be set.
-		 */
-		__osteoporosis__: function(attributes) {
-			this[S_ATTRIBUTES] = {};
-			return this.set(attributes);
-		},
+	modelPrototype[S_INITIALIZE] = noop;
+	modelPrototype[S_TRIGGER] = eventPrototype[S_TRIGGER];
 
-		initialize: noop,
-
+	extend(modelPrototype, {
 		/**
 		 * Sets a storage value.
 		 * @param {Object} attributes Pairs of keys and values to be stored.
@@ -118,7 +121,6 @@ var Osteoporosis = (function() {
 
 		// event methods
 		on: eventPrototype.on,
-		trigger: eventPrototype[S_TRIGGER]
 	});
 
 	// ----------------------------------------------------------------
@@ -126,22 +128,23 @@ var Osteoporosis = (function() {
 	/**
 	 * View
 	 */
-	O.View = function View() {};
+	var View = O.View = function View() {};
+	View[S_EXTEND] = O[S_EXTEND];
+	var viewPrototype = View[S_PROTOTYPE];
 
-	O.View[S_EXTEND] = O[S_EXTEND];
+	/**
+	 * The constructor for view.
+	 * @param {Object} options Any options within `el`.
+	 */
+	viewPrototype[S__OSTEOPOROSIS__] = function(options) {
+		options = options || {};
+		this.$el = $(options.el || document);
+	};
 
-	extend(O.View[S_PROTOTYPE], {
-		/**
-		 * The constructor for view.
-		 * @param {Object} options Any options within `el`.
-		 */
-		__osteoporosis__: function(options) {
-			options = options || {};
-			this.$el = $(options.el || document);
-		},
+	viewPrototype[S_INITIALIZE] = noop;
+	viewPrototype[S_TRIGGER] = eventPrototype[S_TRIGGER];
 
-		initialize: noop,
-
+	extend(viewPrototype, {
 		/**
 		 * Finds element(s) under own element by specified selector.
 		 * @param {String} selector
@@ -153,7 +156,6 @@ var Osteoporosis = (function() {
 
 		// event methods
 		on: eventPrototype.on,
-		trigger: eventPrototype[S_TRIGGER]
 	});
 
 	return O;
