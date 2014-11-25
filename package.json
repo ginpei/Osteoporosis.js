@@ -4,7 +4,8 @@
   "description": "Minimal Model-View library for JavaScript",
   "main": "osteoporosis.js",
   "scripts": {
-    "test": "open test/runner.html"
+    "test": "open test/runner.html",
+    "minify": "node_modules/uglify-js/bin/uglifyjs osteoporosis.js -o osteoporosis.min.js -c -m --comments \"/^\\!/\""
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,7 @@
     "mocha": "^1.20.0",
     "underscore": "^1.7.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "uglify-js": "^2.4.15"
+  }
 }
