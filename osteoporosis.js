@@ -88,9 +88,6 @@ var Osteoporosis = (function() {
 		return this.set(attributes);
 	};
 
-	modelPrototype[S_INITIALIZE] = noop;
-	modelPrototype[S_TRIGGER] = eventPrototype[S_TRIGGER];
-
 	extend(modelPrototype, {
 		/**
 		 * Sets a storage value.
@@ -141,9 +138,6 @@ var Osteoporosis = (function() {
 		this.$el = $(options.el);
 	};
 
-	viewPrototype[S_INITIALIZE] = noop;
-	viewPrototype[S_TRIGGER] = eventPrototype[S_TRIGGER];
-
 	extend(viewPrototype, {
 		/**
 		 * Finds element(s) under own element by specified selector.
@@ -157,6 +151,13 @@ var Osteoporosis = (function() {
 		// event methods
 		on: eventPrototype.on,
 	});
+
+	// ----------------------------------------------------------------
+
+	modelPrototype[S_INITIALIZE] = viewPrototype[S_INITIALIZE] = noop;
+	modelPrototype[S_TRIGGER] = viewPrototype[S_TRIGGER] = eventPrototype[S_TRIGGER];
+
+	// ----------------------------------------------------------------
 
 	return O;
 })();

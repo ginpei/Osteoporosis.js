@@ -9,13 +9,13 @@ var i=this[e];i||(i=this[e]={});var r=i[t];r||(r=i[t]=[]),r.push
 (n)},trigger:function(t){var n=this[e];if(n&&n[t]){var i=a.call(
 arguments,1);n[t].forEach(function(t){t.apply(null,i)})}}},v=t.
 Model=function(){};v[i]=t[i];var l=v[n];l[s]=function(t){
-return this[o]={},this.set(t)},l[u]=c,l[r]=f[r],h(l,{set:
-function(t){var n=this[o];for(var i in t){var e=t[i],s=n[i];e!==
-s&&(n[i]=e,this[r]("change:"+i,this,e),this[r]("change",this))}
-return this},get:function(t){return this[o][t]},on:f.on});var g=
-t.View=function(){};g[i]=t[i];var p=g[n];return p[s]=function(t)
-{t=t||{},this.$el=$(t.el)},p[u]=c,p[r]=f[r],h(p,{$:function(t){
-return this.$el.find(t)},on:f.on}),t}();
+return this[o]={},this.set(t)},h(l,{set:function(t){var n=this[o
+];for(var i in t){var e=t[i],s=n[i];e!==s&&(n[i]=e,this[r](
+"change:"+i,this,e),this[r]("change",this))}return this},get:
+function(t){return this[o][t]},on:f.on});var g=t.View=function()
+{};g[i]=t[i];var p=g[n];return p[s]=function(t){t=t||{},this.$el
+=$(t.el)},h(p,{$:function(t){return this.$el.find(t)},on:f.on}),
+l[u]=p[u]=c,l[r]=p[r]=f[r],t}();
 
 	var O = Osteoporosis;
 
