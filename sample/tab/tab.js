@@ -79,7 +79,7 @@ on}),t}();
 
 		// view
 		var tabView = new TabView({
-			$el: $('#the-tab'),
+			el: $('#the-tab'),
 			model: tab
 		});
 
