@@ -43,10 +43,6 @@ var Osteoporosis = (function() {
 		 */
 		on: function(type, listener) {
 			var allListeners = this[S__LISTENERS];
-			if (!allListeners) {
-				allListeners = this[S__LISTENERS] = {};
-			}
-
 			var listeners = allListeners[type];
 			if (!listeners) {
 				listeners = allListeners[type] = [];
@@ -61,7 +57,7 @@ var Osteoporosis = (function() {
 		 */
 		trigger: function(type) {
 			var allListeners = this[S__LISTENERS];
-			if (allListeners && allListeners[type]) {
+			if (allListeners[type]) {
 				var args = slice.call(arguments, 1);
 				allListeners[type].forEach(function(listener) {
 					listener.apply(null, args);
@@ -84,6 +80,7 @@ var Osteoporosis = (function() {
 	 * @param {Object} attributes Key-value pairs to be set.
 	 */
 	modelPrototype[S__OSTEOPOROSIS__] = function(attributes) {
+		this[S__LISTENERS] = {};
 		this[S_ATTRIBUTES] = {};
 		return this.set(attributes);
 	};
@@ -129,6 +126,7 @@ var Osteoporosis = (function() {
 	 * @param {Object} options Any options within `el`.
 	 */
 	viewPrototype[S__OSTEOPOROSIS__] = function(options) {
+		this[S__LISTENERS] = {};
 		options = options || {};
 		this.$el = $(options.el);
 	};

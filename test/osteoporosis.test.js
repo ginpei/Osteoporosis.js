@@ -8,6 +8,7 @@ describe('Event', function() {
 	var eventObj;
 	beforeEach(function() {
 		eventObj = new MyEvent();
+		eventObj._listeners = {};
 	});
 
 	it('fires event with arguments', function() {
@@ -34,6 +35,17 @@ describe('Event', function() {
 
 		expect(called1).to.eql(123);
 		expect(called2).to.eql(123);
+	});
+
+	it('does not throw errors with event if there are no listeners', function() {
+		try {
+			eventObj.trigger('foo');
+			var safe = 1;
+		}
+		catch (err) {
+			// nothing to do
+		}
+		expect(safe).to.eql(1);
 	});
 });
 
@@ -65,6 +77,18 @@ describe('Model', function() {
 			expect(granchild.foo).to.eql(234);
 			expect(granchild.child).to.eql(1);
 			expect(granchild.granchild).to.eql(1);
+		});
+	});
+
+	describe('events', function() {
+		it('is ready for events', function() {
+			var model = new MyModel();
+			var called = 0;
+			model.on('foo', function() {
+				called++;
+			});
+			model.trigger('foo');
+			expect(called).to.eql(1);
 		});
 	});
 
@@ -121,6 +145,18 @@ describe('View', function() {
 			};
 			return obj;
 		};
+	});
+
+	describe('events', function() {
+		it('is ready for events', function() {
+			var view = new MyView();
+			var called = 0;
+			view.on('foo', function() {
+				called++;
+			});
+			view.trigger('foo');
+			expect(called).to.eql(1);
+		});
 	});
 
 	describe('elements', function() {

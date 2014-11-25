@@ -2,20 +2,20 @@
 /*! Osteoporosis.js v1.0.1 By TAKANASHI Ginpei */
 var Osteoporosis=function(){var t={},n="prototype",i="extend",r=
 "trigger",e="attributes",o="_listeners",s="__osteoporosis__",u=
-"initialize",a=[].slice,h=$[i],c=function(){};t[i]=function(r,e)
-{function o(t){this[s](t),this[u](t)}return o[i]=t[i],h(o[n],
-this[n],r),h(o,e),o};var f=t.eventPrototype={on:function(t,n){
-var i=this[o];i||(i=this[o]={});var r=i[t];r||(r=i[t]=[]),r.push
-(n)},trigger:function(t){var n=this[o];if(n&&n[t]){var i=a.call(
-arguments,1);n[t].forEach(function(t){t.apply(null,i)})}}},v=t.
-Model=function(){};v[i]=t[i];var l=v[n];l[s]=function(t){
-return this[e]={},this.set(t)},l.set=function(t){var n=this[e];
-for(var i in t){var o=t[i],s=n[i];o!==s&&(n[i]=o,this[r](
-"change:"+i,this,o),this[r]("change",this))}return this},l.get=
-function(t){return this[e][t]};var g=t.View=function(){};g[i]=t[
-i];var p=g[n];return p[s]=function(t){t=t||{},this.$el=$(t.el)},
-p.$=function(t){return this.$el.find(t)},l[u]=p[u]=c,l[r]=p[r]=f
-[r],l.on=p.on=f.on,t}();
+"initialize",h=[].slice,a=$[i],c=function(){};t[i]=function(r,e)
+{function o(t){this[s](t),this[u](t)}return o[i]=t[i],a(o[n],
+this[n],r),a(o,e),o};var f=t.eventPrototype={on:function(t,n){
+var i=this[o],r=i[t];r||(r=i[t]=[]),r.push(n)},trigger:function(
+t){var n=this[o];if(n[t]){var i=h.call(arguments,1);n[t].forEach
+(function(t){t.apply(null,i)})}}},v=t.Model=function(){};v[i]=t[
+i];var l=v[n];l[s]=function(t){return this[o]={},this[e]={},this
+.set(t)},l.set=function(t){var n=this[e];for(var i in t){var o=t
+[i],s=n[i];o!==s&&(n[i]=o,this[r]("change:"+i,this,o),this[r](
+"change",this))}return this},l.get=function(t){return this[e][t]
+};var g=t.View=function(){};g[i]=t[i];var p=g[n];return p[s]=
+function(t){this[o]={},t=t||{},this.$el=$(t.el)},p.$=function(t)
+{return this.$el.find(t)},l[u]=p[u]=c,l[r]=p[r]=f[r],l.on=p.on=f
+.on,t}();
 
 	var O = Osteoporosis;
 
