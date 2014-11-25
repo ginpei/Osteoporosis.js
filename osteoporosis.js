@@ -138,7 +138,7 @@ var Osteoporosis = (function() {
 	 */
 	viewPrototype[S__OSTEOPOROSIS__] = function(options) {
 		options = options || {};
-		this.$el = $(options.el || document);
+		this.$el = $(options.el);
 	};
 
 	viewPrototype[S_INITIALIZE] = noop;
