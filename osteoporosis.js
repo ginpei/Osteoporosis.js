@@ -114,10 +114,7 @@ var Osteoporosis = (function() {
 		 */
 		get: function(key) {
 			return this[S_ATTRIBUTES][key];
-		},
-
-		// event methods
-		on: eventPrototype.on,
+		}
 	});
 
 	// ----------------------------------------------------------------
@@ -146,16 +143,14 @@ var Osteoporosis = (function() {
 		 */
 		$: function(selector) {
 			return this.$el.find(selector);
-		},
-
-		// event methods
-		on: eventPrototype.on,
+		}
 	});
 
 	// ----------------------------------------------------------------
 
 	modelPrototype[S_INITIALIZE] = viewPrototype[S_INITIALIZE] = noop;
 	modelPrototype[S_TRIGGER] = viewPrototype[S_TRIGGER] = eventPrototype[S_TRIGGER];
+	modelPrototype.on = viewPrototype.on = eventPrototype.on;
 
 	// ----------------------------------------------------------------
 
