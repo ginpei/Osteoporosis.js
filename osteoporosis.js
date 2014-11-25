@@ -13,7 +13,7 @@ var Osteoporosis = (function() {
 	var S_INITIALIZE = 'initialize';
 
 	var slice = [].slice;
-	var extend = (typeof _ === 'undefined' ? $[S_EXTEND] : _[S_EXTEND]);
+	var extend = $[S_EXTEND];
 	var noop = function() { };
 
 	// ----------------------------------------------------------------
