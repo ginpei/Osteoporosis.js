@@ -88,34 +88,32 @@ var Osteoporosis = (function() {
 		return this.set(attributes);
 	};
 
-	extend(modelPrototype, {
-		/**
-		 * Sets a storage value.
-		 * @param {Object} attributes Pairs of keys and values to be stored.
-		 */
-		set: function(attributes) {
-			var storage = this[S_ATTRIBUTES];
-			for (var key in attributes) {
-				var value = attributes[key];
-				var lastValue = storage[key];
-				if (value !== lastValue) {
-					storage[key] = value;
-					this[S_TRIGGER]('change:'+key, this, value);
-					this[S_TRIGGER]('change', this);
-				}
+	/**
+	 * Sets a storage value.
+	 * @param {Object} attributes Pairs of keys and values to be stored.
+	 */
+	modelPrototype.set = function(attributes) {
+		var storage = this[S_ATTRIBUTES];
+		for (var key in attributes) {
+			var value = attributes[key];
+			var lastValue = storage[key];
+			if (value !== lastValue) {
+				storage[key] = value;
+				this[S_TRIGGER]('change:'+key, this, value);
+				this[S_TRIGGER]('change', this);
 			}
-			return this;
-		},
-
-		/**
-		 * Gives a storage value.
-		 * @param {String} key Name of the storage value.
-		 * @returns {Object} The content of storaged value.
-		 */
-		get: function(key) {
-			return this[S_ATTRIBUTES][key];
 		}
-	});
+		return this;
+	};
+
+	/**
+	 * Gives a storage value.
+	 * @param {String} key Name of the storage value.
+	 * @returns {Object} The content of storaged value.
+	 */
+	modelPrototype.get = function(key) {
+		return this[S_ATTRIBUTES][key];
+	};
 
 	// ----------------------------------------------------------------
 
@@ -135,16 +133,14 @@ var Osteoporosis = (function() {
 		this.$el = $(options.el);
 	};
 
-	extend(viewPrototype, {
-		/**
-		 * Finds element(s) under own element by specified selector.
-		 * @param {String} selector
-		 * @returns {Element}
-		 */
-		$: function(selector) {
-			return this.$el.find(selector);
-		}
-	});
+	/**
+	 * Finds element(s) under own element by specified selector.
+	 * @param {String} selector
+	 * @returns {Element}
+	 */
+	viewPrototype.$ = function(selector) {
+		return this.$el.find(selector);
+	};
 
 	// ----------------------------------------------------------------
 
