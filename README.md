@@ -1,5 +1,7 @@
 日本語→[README.ja.md](./README.ja.md)
 
+(This might be not-latest.)
+
 # Osteoporosis.js
 
 Minimal Model-View library for JavaScript.

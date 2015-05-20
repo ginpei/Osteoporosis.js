@@ -1,5 +1,7 @@
 English -> [README.md](./README.md)
 
+（最新じゃないかも。）
+
 # Osteoporosis.js
 
 最小構成のJavaScript Model-Viewライブラリー。
