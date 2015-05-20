@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="slider.css" />
+		<title>Slider</title>
+	</head>
+	<body>
+		<h1>Slider UI</h1>
+
+		<div class="block">
+			<span id="the-slider1" class="ui-range" data-value="0" data-min="0" data-max="100"></span>
+			<input id="the-number1" type="number" value="0" />
+		</div>
+
+		<h2>Use in Form</h2>
+		<div id="formValue" class="is-hidden"></div>
+		<form class="block">
+			<span id="the-slider2" class="ui-range" data-value="0" data-min="0" data-max="100"></span>
+			<input id="the-number2" type="hidden" name="range" value="0" />
+			<button>Send</button>
+		</form>
+
+		<!--
+		<script>
+			// for IE 7, 8
+			Array.prototype.forEach = Array.prototype.forEach || function(fn) {
+				for (var i=0, l=this.length; i<l; i++) {
+					fn.call(this, this[i], i);
+				}
+			};
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+		-->
+		<script src="../jquery.min.js"></script>
+		<script src="../../osteoporosis.min.js"></script>
+		<script src="slider.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,42 @@
+.block {
+	margin: 2em;
+}
+.is-hidden {
+	display: none;
+}
+
+/* Graphical */
+.ui-range {
+	height: 20px;
+	vertical-align: top;
+	width: 300px;
+}
+.ui-range {
+	background-color: #eee;
+}
+.ui-range-knob {
+	background-color: #999;
+	border-color: #333;
+}
+.ui-range.ui-active {
+	background-color: #ccc;
+}
+.ui-range-knob {
+	border: solid 1px;
+	width: 0.5em;
+}
+
+/* System */
+.ui-range {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+}
+.ui-range-knob {
+	box-sizing: border-box;
+	display: inline-block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+}
