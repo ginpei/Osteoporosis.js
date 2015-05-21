@@ -253,6 +253,9 @@ var view = new MyView({ el:$('#target'), model:model });
 
 ### initialize(options)
 
+* `options.el`: {HtmlElement} Default is `document`.
+* `options.model`: {Osteoporosis.Model}
+
 `options`の`el`, `model`は自動的にプロパティに保存されます。
 
 ```js
@@ -265,6 +268,8 @@ var MyView = O.Model.extend({
 });
 var view = new MyView({ el:$('#target'), model:model });
 ```
+
+`options.el`が`view.$el`となるのであって、`options.$el`や`view.el`ではない事に気を付けてください。
 
 ### $(selector)
 

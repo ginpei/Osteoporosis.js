@@ -253,6 +253,9 @@ var view = new MyView({ el:$('#target'), model:model });
 
 ### initialize(options)
 
+* `options.el`: {HtmlElement} Default is `document`.
+* `options.model`: {Osteoporosis.Model}
+
 `el` and `model` values in `options` are set to property automaticaly.
 
 ```js
@@ -265,6 +268,8 @@ var MyView = O.Model.extend({
 });
 var view = new MyView({ el:$('#target'), model:model });
 ```
+
+Note that `options.el` will become `view.$el`, not `options.$el` nor `view.el`.
 
 ### $(selector)
 
