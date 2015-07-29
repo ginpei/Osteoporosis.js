@@ -1,5 +1,5 @@
 (function() {
-/*! Osteoporosis.js v1.0.1 By TAKANASHI Ginpei */
+/*! Osteoporosis.js v0.0.2 By TAKANASHI Ginpei */
 var Osteoporosis=function(){var t={},i="prototype",n="extend",e=
 "trigger",o="attributes",r="_listeners",s=[].slice,u="undefined"
 ==typeof _?$[n]:_[n],a=function(){};t[n]=function(e,o){function
