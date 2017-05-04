@@ -4,6 +4,8 @@
 
 # Osteoporosis.js
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ginpei/Osteoporosis.js.svg)](https://greenkeeper.io/)
+
 Minimal Model-View library for JavaScript.
 
 ## What is this?
